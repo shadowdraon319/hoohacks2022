@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "378242149460",
+    "project_id": "caring-5a900",
+    "storage_bucket": "caring-5a900.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:378242149460:android:f83d4a2fed7c0fcdf1d1c1",
+        "android_client_info": {
+          "package_name": "com.sabresmedia.presence"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "378242149460-5j7mqoil95qq0jbk9ma7ecm0o1kqftp3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCsx4FN2OHqYGychBSToQz6EN2sMceTg7I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "378242149460-5j7mqoil95qq0jbk9ma7ecm0o1kqftp3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
