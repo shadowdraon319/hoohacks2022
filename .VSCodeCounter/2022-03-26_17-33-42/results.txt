@@ -1,0 +1,103 @@
+Date : 2022-03-26 17:33:42
+Directory : /Users/amayrbabar/Desktop/Sabres Media/Apps/careing
+Total : 42 files,  1395 codes, 248 comments, 243 blanks, all 1886 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| Dart       |          7 |        417 |         21 |         33 |        471 |
+| C++        |         11 |        405 |         80 |        132 |        617 |
+| JSON       |          4 |        219 |          0 |          3 |        222 |
+| XML        |          9 |        123 |         46 |         11 |        180 |
+| Groovy     |          3 |         92 |          3 |         22 |        117 |
+| HTML       |          1 |         80 |         18 |          7 |        105 |
+| YAML       |          2 |         26 |         79 |         22 |        127 |
+| Markdown   |          2 |         13 |          0 |          9 |         22 |
+| Swift      |          1 |         12 |          0 |          2 |         14 |
+| Properties |          2 |          8 |          1 |          2 |         11 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++-------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                              | files      | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                                 |         42 |      1,395 |        248 |        243 |      1,886 |
+| android                                                                                                           |         13 |        201 |         48 |         33 |        282 |
+| android/app                                                                                                       |          9 |        155 |         47 |         22 |        224 |
+| android/app/src                                                                                                   |          7 |         62 |         44 |          9 |        115 |
+| android/app/src/debug                                                                                             |          1 |          4 |          3 |          1 |          8 |
+| android/app/src/main                                                                                              |          5 |         54 |         38 |          7 |         99 |
+| android/app/src/main/res                                                                                          |          4 |         26 |         32 |          6 |         64 |
+| android/app/src/main/res/drawable                                                                                 |          1 |          4 |          7 |          2 |         13 |
+| android/app/src/main/res/drawable-v21                                                                             |          1 |          4 |          7 |          2 |         13 |
+| android/app/src/main/res/values                                                                                   |          1 |          9 |          9 |          1 |         19 |
+| android/app/src/main/res/values-night                                                                             |          1 |          9 |          9 |          1 |         19 |
+| android/app/src/profile                                                                                           |          1 |          4 |          3 |          1 |          8 |
+| android/gradle                                                                                                    |          1 |          5 |          1 |          1 |          7 |
+| android/gradle/wrapper                                                                                            |          1 |          5 |          1 |          1 |          7 |
+| ios                                                                                                               |          7 |        222 |          2 |          9 |        233 |
+| ios/Runner                                                                                                        |          7 |        222 |          2 |          9 |        233 |
+| ios/Runner/Assets.xcassets                                                                                        |          3 |        148 |          0 |          4 |        152 |
+| ios/Runner/Assets.xcassets/AppIcon.appiconset                                                                     |          1 |        122 |          0 |          1 |        123 |
+| ios/Runner/Assets.xcassets/LaunchImage.imageset                                                                   |          2 |         26 |          0 |          3 |         29 |
+| ios/Runner/Base.lproj                                                                                             |          2 |         61 |          2 |          2 |         65 |
+| lib                                                                                                               |          6 |        403 |         11 |         26 |        440 |
+| lib/Componenets                                                                                                   |          1 |         52 |          0 |          4 |         56 |
+| lib/Screens                                                                                                       |          3 |        320 |          1 |         18 |        339 |
+| lib/Screens/Authentication                                                                                        |          2 |        312 |          1 |         17 |        330 |
+| test                                                                                                              |          1 |         14 |         10 |          7 |         31 |
+| web                                                                                                               |          2 |        115 |         18 |          8 |        141 |
+| windows                                                                                                           |         10 |        404 |         80 |        131 |        615 |
+| windows/flutter                                                                                                   |          2 |          8 |          9 |         11 |         28 |
+| windows/runner                                                                                                    |          8 |        396 |         71 |        120 |        587 |
++-------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                                                          | language   | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| /Users/amayrbabar/Desktop/Sabres Media/Apps/careing/README.md                                                     | Markdown   |         10 |          0 |          7 |         17 |
+| /Users/amayrbabar/Desktop/Sabres Media/Apps/careing/analysis_options.yaml                                         | YAML       |          3 |         23 |          4 |         30 |
+| /Users/amayrbabar/Desktop/Sabres Media/Apps/careing/android/app/build.gradle                                      | Groovy     |         54 |          3 |         13 |         70 |
+| /Users/amayrbabar/Desktop/Sabres Media/Apps/careing/android/app/google-services.json                              | JSON       |         39 |          0 |          0 |         39 |
+| /Users/amayrbabar/Desktop/Sabres Media/Apps/careing/android/app/src/debug/AndroidManifest.xml                     | XML        |          4 |          3 |          1 |          8 |
+| /Users/amayrbabar/Desktop/Sabres Media/Apps/careing/android/app/src/main/AndroidManifest.xml                      | XML        |         28 |          6 |          1 |         35 |
+| /Users/amayrbabar/Desktop/Sabres Media/Apps/careing/android/app/src/main/res/drawable-v21/launch_background.xml   | XML        |          4 |          7 |          2 |         13 |
+| /Users/amayrbabar/Desktop/Sabres Media/Apps/careing/android/app/src/main/res/drawable/launch_background.xml       | XML        |          4 |          7 |          2 |         13 |
+| /Users/amayrbabar/Desktop/Sabres Media/Apps/careing/android/app/src/main/res/values-night/styles.xml              | XML        |          9 |          9 |          1 |         19 |
+| /Users/amayrbabar/Desktop/Sabres Media/Apps/careing/android/app/src/main/res/values/styles.xml                    | XML        |          9 |          9 |          1 |         19 |
+| /Users/amayrbabar/Desktop/Sabres Media/Apps/careing/android/app/src/profile/AndroidManifest.xml                   | XML        |          4 |          3 |          1 |          8 |
+| /Users/amayrbabar/Desktop/Sabres Media/Apps/careing/android/build.gradle                                          | Groovy     |         30 |          0 |          5 |         35 |
+| /Users/amayrbabar/Desktop/Sabres Media/Apps/careing/android/gradle.properties                                     | Properties |          3 |          0 |          1 |          4 |
+| /Users/amayrbabar/Desktop/Sabres Media/Apps/careing/android/gradle/wrapper/gradle-wrapper.properties              | Properties |          5 |          1 |          1 |          7 |
+| /Users/amayrbabar/Desktop/Sabres Media/Apps/careing/android/settings.gradle                                       | Groovy     |          8 |          0 |          4 |         12 |
+| /Users/amayrbabar/Desktop/Sabres Media/Apps/careing/ios/Runner/AppDelegate.swift                                  | Swift      |         12 |          0 |          2 |         14 |
+| /Users/amayrbabar/Desktop/Sabres Media/Apps/careing/ios/Runner/Assets.xcassets/AppIcon.appiconset/Contents.json   | JSON       |        122 |          0 |          1 |        123 |
+| /Users/amayrbabar/Desktop/Sabres Media/Apps/careing/ios/Runner/Assets.xcassets/LaunchImage.imageset/Contents.json | JSON       |         23 |          0 |          1 |         24 |
+| /Users/amayrbabar/Desktop/Sabres Media/Apps/careing/ios/Runner/Assets.xcassets/LaunchImage.imageset/README.md     | Markdown   |          3 |          0 |          2 |          5 |
+| /Users/amayrbabar/Desktop/Sabres Media/Apps/careing/ios/Runner/Base.lproj/LaunchScreen.storyboard                 | XML        |         36 |          1 |          1 |         38 |
+| /Users/amayrbabar/Desktop/Sabres Media/Apps/careing/ios/Runner/Base.lproj/Main.storyboard                         | XML        |         25 |          1 |          1 |         27 |
+| /Users/amayrbabar/Desktop/Sabres Media/Apps/careing/ios/Runner/Runner-Bridging-Header.h                           | C++        |          1 |          0 |          1 |          2 |
+| /Users/amayrbabar/Desktop/Sabres Media/Apps/careing/lib/Componenets/background.dart                               | Dart       |         52 |          0 |          4 |         56 |
+| /Users/amayrbabar/Desktop/Sabres Media/Apps/careing/lib/Screens/Authentication/login.dart                         | Dart       |        139 |          0 |          7 |        146 |
+| /Users/amayrbabar/Desktop/Sabres Media/Apps/careing/lib/Screens/Authentication/register.dart                      | Dart       |        173 |          1 |         10 |        184 |
+| /Users/amayrbabar/Desktop/Sabres Media/Apps/careing/lib/Screens/dashboard.dart                                    | Dart       |          8 |          0 |          1 |          9 |
+| /Users/amayrbabar/Desktop/Sabres Media/Apps/careing/lib/main.dart                                                 | Dart       |         22 |         10 |          4 |         36 |
+| /Users/amayrbabar/Desktop/Sabres Media/Apps/careing/lib/presence.dart                                             | Dart       |          9 |          0 |          0 |          9 |
+| /Users/amayrbabar/Desktop/Sabres Media/Apps/careing/pubspec.yaml                                                  | YAML       |         23 |         56 |         18 |         97 |
+| /Users/amayrbabar/Desktop/Sabres Media/Apps/careing/test/widget_test.dart                                         | Dart       |         14 |         10 |          7 |         31 |
+| /Users/amayrbabar/Desktop/Sabres Media/Apps/careing/web/index.html                                                | HTML       |         80 |         18 |          7 |        105 |
+| /Users/amayrbabar/Desktop/Sabres Media/Apps/careing/web/manifest.json                                             | JSON       |         35 |          0 |          1 |         36 |
+| /Users/amayrbabar/Desktop/Sabres Media/Apps/careing/windows/flutter/generated_plugin_registrant.cc                | C++        |          3 |          4 |          5 |         12 |
+| /Users/amayrbabar/Desktop/Sabres Media/Apps/careing/windows/flutter/generated_plugin_registrant.h                 | C++        |          5 |          5 |          6 |         16 |
+| /Users/amayrbabar/Desktop/Sabres Media/Apps/careing/windows/runner/flutter_window.cpp                             | C++        |         45 |          4 |         13 |         62 |
+| /Users/amayrbabar/Desktop/Sabres Media/Apps/careing/windows/runner/flutter_window.h                               | C++        |         20 |          5 |          9 |         34 |
+| /Users/amayrbabar/Desktop/Sabres Media/Apps/careing/windows/runner/main.cpp                                       | C++        |         30 |          4 |         10 |         44 |
+| /Users/amayrbabar/Desktop/Sabres Media/Apps/careing/windows/runner/resource.h                                     | C++        |          9 |          6 |          2 |         17 |
+| /Users/amayrbabar/Desktop/Sabres Media/Apps/careing/windows/runner/utils.cpp                                      | C++        |         53 |          2 |         10 |         65 |
+| /Users/amayrbabar/Desktop/Sabres Media/Apps/careing/windows/runner/utils.h                                        | C++        |          8 |          6 |          6 |         20 |
+| /Users/amayrbabar/Desktop/Sabres Media/Apps/careing/windows/runner/win32_window.cpp                               | C++        |        183 |         15 |         48 |        246 |
+| /Users/amayrbabar/Desktop/Sabres Media/Apps/careing/windows/runner/win32_window.h                                 | C++        |         48 |         29 |         22 |         99 |
+| Total                                                                                                             |            |      1,395 |        248 |        243 |      1,886 |
++-------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+

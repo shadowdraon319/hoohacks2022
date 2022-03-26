@@ -1,6 +1,17 @@
 import 'package:careing/presence.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
+
+  final emailController = TextEditingController();
+
+  final passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -27,7 +38,8 @@ class LoginScreen extends StatelessWidget {
             alignment: Alignment.center,
             margin: EdgeInsets.symmetric(horizontal: 40),
             child: TextField(
-              decoration: InputDecoration(labelText: 'Username'),
+              controller: emailController,
+              decoration: InputDecoration(labelText: 'Email'),
             ),
           ),
           SizedBox(
@@ -37,6 +49,7 @@ class LoginScreen extends StatelessWidget {
             alignment: Alignment.center,
             margin: EdgeInsets.symmetric(horizontal: 40),
             child: TextField(
+              controller: passwordController,
               decoration: InputDecoration(labelText: 'Password'),
               obscureText: true,
             ),
@@ -56,7 +69,32 @@ class LoginScreen extends StatelessWidget {
             alignment: Alignment.centerRight,
             margin: EdgeInsets.symmetric(horizontal: 40, vertical: 10),
             child: RaisedButton(
-              onPressed: () {},
+              onPressed: () async {
+                if (emailController.text.toString().isEmpty ||
+                    passwordController.text.toString().isEmpty) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text('Please Input All Fields')));
+                } else {
+                  try {
+                    UserCredential userCredential = await FirebaseAuth.instance
+                        .signInWithEmailAndPassword(
+                            email: emailController.text.trim().toString(),
+                            password:
+                                passwordController.text.trim().toString());
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Dashboard()));
+                  } on FirebaseAuthException catch (e) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text(e.code.toString())));
+
+                    if (e.code == 'user-not-found') {
+                      print('No user found for that email.');
+                    } else if (e.code == 'wrong-password') {
+                      print('Wrong password provided for that user.');
+                    }
+                  }
+                }
+              },
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(80.0),
               ),
@@ -93,7 +131,7 @@ class LoginScreen extends StatelessWidget {
                           builder: (context) => RegisterScreen()));
                 },
                 child: Text(
-                  'Already Have an Account? Sign In',
+                  'Dont Have an Account? Sign up',
                   style: TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.bold,
