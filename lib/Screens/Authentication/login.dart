@@ -1,3 +1,4 @@
+import 'package:careing/Screens/onboading.dart';
 import 'package:careing/presence.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -82,7 +83,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             password:
                                 passwordController.text.trim().toString());
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Dashboard()));
+                        MaterialPageRoute(builder: (context) => OnBoardingPage()));
                   } on FirebaseAuthException catch (e) {
                     ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(content: Text(e.code.toString())));

@@ -7,3 +7,4 @@ export 'package:cloud_firestore/cloud_firestore.dart';
 export 'package:firebase_messaging/firebase_messaging.dart';
 export 'package:firebase_auth/firebase_auth.dart';
 export 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:introduction_screen/introduction_screen.dart';
