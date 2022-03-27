@@ -1,3 +1,5 @@
+
+import 'package:careing/Screens/onboading.dart';
 import 'package:careing/presence.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -5,7 +7,8 @@ class RegisterScreen extends StatefulWidget {
   State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
-class _RegisterScreenState extends State<RegisterScreen> {
+class _RegisterScreenState extends State<RegisterScreen>
+    with WidgetsBindingObserver {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   CollectionReference users = FirebaseFirestore.instance.collection('users');
@@ -17,6 +20,72 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final passwordController = TextEditingController();
 
   final nameController = TextEditingController();
+
+  String referralUID = '';
+
+  @override
+  void initState() {
+    super.initState();
+    print('init state ran');
+    WidgetsBinding.instance.addObserver(this);
+    fetchLinkData();
+  }
+
+  void fetchLinkData() async {
+    // FirebaseDynamicLinks.getInitialLInk does a call to firebase to get us the real link because we have shortened it.
+
+    // This link may exist if the app was opened fresh so we'll want to handle it the same way onLink will.
+    getChallengeWord();
+
+    FirebaseDynamicLinks.instance.onLink.listen((dynamicLinkData) async {
+      DynamicLinkService _dynamicLinkService = DynamicLinkService();
+      String word = await _dynamicLinkService.handleLinkData(dynamicLinkData);
+      //print('getLinkData ' + word);
+      if (word.isNotEmpty) {
+        print('wordieChallenge is ' + word);
+        print('wordieChallenge is not null');
+        referralUID = word;
+        // Navigator.of(context).push(MaterialPageRoute(
+        //     builder: (context) => WordleScreen(wordieChallenge: word)));
+      }
+    }).onError((error) {
+      // Handle errors
+    });
+  }
+
+  Timer _timerLink;
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    print('didChangeAppLifecycleState');
+    if (state == AppLifecycleState.resumed) {
+      _timerLink = new Timer(const Duration(milliseconds: 850), () {
+        print('timerChallengeRan');
+        getChallengeWord();
+      });
+    }
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    if (_timerLink != null) {
+      _timerLink.cancel();
+    }
+    super.dispose();
+  }
+
+  Future<void> getChallengeWord() async {
+    DynamicLinkService _dynamicLinkService = DynamicLinkService();
+    String word = await _dynamicLinkService.isLinkValid();
+    print('getLinkData ' + word);
+    if (word.isNotEmpty) {
+      print('wordieChallenge is ' + word);
+      print('wordieChallenge is not null');
+      referralUID = word;
+      // Navigator.of(context).push(MaterialPageRoute(
+      //     builder: (context) => WordleScreen(wordieChallenge: word)));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -96,6 +165,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 } else {
                   if (passwordController.text.length >= 6 &&
                       passwordController.text.length >= 6) {
+                    bool isPatient;
+                    if (referralUID.isEmpty) {
+                      isPatient = true;
+                    } else {
+                      isPatient = false;
+                    }
                     try {
                       UserCredential userCredential = await FirebaseAuth
                           .instance
@@ -103,19 +178,40 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               email: emailController.text.trim(),
                               password: passwordController.text.toString());
 
-                      return users.doc(userCredential.user!.uid).set({
+                      return users.doc(userCredential.user.uid).set({
                         'Name':
                             nameController.text.trim().toString(), // John Doe
                         'Email': emailController.text.trim().toString(),
                         'Password': passwordController.text.trim().toString(),
-                        'UID': userCredential.user!.uid.toString()
+                        'UID': userCredential.user.uid.toString(),
+                        'isPatient': isPatient,
                         // Stokes and Sons
-                      }).then((value) {
+                      }).then((value) async {
                         print("User Added");
-                        Navigator.push(
+                        if (isPatient == true) {
+                          await FirebaseFirestore.instance
+                              .collection('users')
+                              .doc(referralUID)
+                              .collection("supportNetwork")
+                              .add({
+                            'UID': referralUID
+                            //add your data that you want to upload
+                          });
+
+                          Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => Dashboard()));
+                              builder: (context) => OnBoardingPage(),
+                            ),
+                          );
+                        } else {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Dashboard(),
+                            ),
+                          );
+                        }
                       }).catchError(
                           (error) => print("Failed to add user: $error"));
                     } on FirebaseAuthException catch (e) {

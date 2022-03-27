@@ -82,8 +82,10 @@ class _LoginScreenState extends State<LoginScreen> {
                             email: emailController.text.trim().toString(),
                             password:
                                 passwordController.text.trim().toString());
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => OnBoardingPage()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => OnBoardingPage()));
                   } on FirebaseAuthException catch (e) {
                     ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(content: Text(e.code.toString())));
@@ -122,23 +124,22 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
           ),
           Container(
-              alignment: Alignment.centerRight,
-              margin: EdgeInsets.symmetric(horizontal: 40, vertical: 10),
-              child: GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => RegisterScreen()));
-                },
-                child: Text(
-                  'Dont Have an Account? Sign up',
-                  style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFF2661FA)),
-                ),
-              ))
+            alignment: Alignment.centerRight,
+            margin: EdgeInsets.symmetric(horizontal: 40, vertical: 10),
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => RegisterScreen()));
+              },
+              child: Text(
+                'Dont Have an Account? Sign up',
+                style: TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xFF2661FA)),
+              ),
+            ),
+          ),
         ]),
       ),
     );

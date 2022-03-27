@@ -2,7 +2,6 @@ import 'package:careing/presence.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 
-
 class OnBoardingPage extends StatefulWidget {
   @override
   _OnBoardingPageState createState() => _OnBoardingPageState();
@@ -10,11 +9,34 @@ class OnBoardingPage extends StatefulWidget {
 
 class _OnBoardingPageState extends State<OnBoardingPage> {
   final introKey = GlobalKey<IntroductionScreenState>();
+  final nameController = TextEditingController();
 
-  void _onIntroEnd(context) {
-    Navigator.of(context).push(
-      MaterialPageRoute(builder: (_) => Dashboard()),
-    );
+  void _onIntroEnd(context) async {
+    if (nameController.text.isNotEmpty) {
+      DynamicLinkService _dynamicLinkService = DynamicLinkService();
+      String link = await _dynamicLinkService.getSupporterLink();
+      print(link);
+      if (link != null) {
+        Share.share('${link}');
+        // Navigator.of(context).push(
+        //   MaterialPageRoute(builder: (_) => Dashboard()),
+       // );
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            dismissDirection: DismissDirection.none,
+            duration: const Duration(seconds: 3),
+            backgroundColor: Colors.redAccent[200],
+            content: Text(
+              'Error',
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
+          ),
+        );
+      }
+    }
   }
 
   Widget _buildFullscreenImage() {
@@ -51,94 +73,46 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
         child: SafeArea(
           child: Padding(
             padding: const EdgeInsets.only(top: 16, right: 16),
-            child: _buildImage('main.png', 100),
+            child: _buildImage('achieve.png', 100),
           ),
         ),
       ),
       globalFooter: SizedBox(
         width: double.infinity,
         height: 60,
-        child: ElevatedButton(
-          child: const Text(
-            'Let\'s go right away!',
-            style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
-          ),
-          onPressed: () => _onIntroEnd(context),
-        ),
       ),
       pages: [
         PageViewModel(
-          title: "Fractional shares",
+          title: "We're here for you",
           body:
-          "Instead of having to buy an entire share, invest any amount you want.",
-          image: _buildImage('top1.png'),
+              "We hope to help you build motivation and maintain your progress.",
+          image: _buildImage('brain.png'),
           decoration: pageDecoration,
         ),
         PageViewModel(
-          title: "Learn as you go",
-          body:
-          "Download the Stockpile app and master the market with our mini-lesson.",
-          image: _buildImage('top1.png'),
+          title: "Coping with Urges",
+          body: "Connect with your support network in real time for help.",
+          image: _buildImage('healthy.png'),
           decoration: pageDecoration,
         ),
         PageViewModel(
-          title: "Kids and teens",
-          body:
-          "Kids and teens can track their stocks 24/7 and place trades that you approve.",
-          image: _buildImage('top1.png'),
-          decoration: pageDecoration,
-        ),
-        PageViewModel(
-          title: "Full Screen Page",
-          body:
-          "Pages can be full screen as well.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc id euismod lectus, non tempor felis. Nam rutrum rhoncus est ac venenatis.",
-          image: _buildImage('top1.png'),
-          decoration: pageDecoration.copyWith(
-            contentMargin: const EdgeInsets.symmetric(horizontal: 16),
-            fullScreen: true,
-            bodyFlex: 2,
-            imageFlex: 3,
-          ),
-        ),
-        PageViewModel(
-          title: "Another title page",
-          body: "Another beautiful body text for this example onboarding",
-          image: _buildImage('top1.png'),
-          footer: ElevatedButton(
-            onPressed: () {
-              introKey.currentState?.animateScroll(0);
-            },
-            child: const Text(
-              'FooButton',
-              style: TextStyle(color: Colors.white),
-            ),
-            style: ElevatedButton.styleFrom(
-              primary: Colors.lightBlue,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8.0),
+          title:
+              "Please input the name of the person who can support your journey.",
+          body: "You can do this. You are not alone.",
+          image: _buildImage('relapse.png'),
+          footer: Column(
+            children: [
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 40),
+                child: TextField(
+                  controller: nameController,
+                  decoration: InputDecoration(labelText: 'Name'),
+                ),
               ),
-            ),
-          ),
-          decoration: pageDecoration,
-        ),
-        PageViewModel(
-          title: "Title of last page - reversed",
-          bodyWidget: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              Text("Click on ", style: bodyStyle),
-              Icon(Icons.edit),
-              Text(" to edit a post", style: bodyStyle),
+              SizedBox(height: 30),
             ],
           ),
-          decoration: pageDecoration.copyWith(
-            bodyFlex: 2,
-            imageFlex: 4,
-            bodyAlignment: Alignment.bottomCenter,
-            imageAlignment: Alignment.topCenter,
-          ),
-          image: _buildImage('main.png'),
-          reverse: true,
+          decoration: pageDecoration,
         ),
       ],
       onDone: () => _onIntroEnd(context),
@@ -146,7 +120,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
       showSkipButton: false,
       skipOrBackFlex: 0,
       nextFlex: 0,
-      showBackButton: true,
+      showBackButton: false,
       //rtl: true, // Display as right-to-left
       back: const Icon(Icons.arrow_back),
       skip: const Text('Skip', style: TextStyle(fontWeight: FontWeight.w600)),
