@@ -18,9 +18,9 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
       print(link);
       if (link != null) {
         Share.share('${link}');
-        // Navigator.of(context).push(
-        //   MaterialPageRoute(builder: (_) => Dashboard()),
-       // );
+        Navigator.of(context).push(
+          MaterialPageRoute(builder: (_) => Dashboard()),
+        );
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(

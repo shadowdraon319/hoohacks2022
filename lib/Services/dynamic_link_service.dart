@@ -67,7 +67,7 @@ class DynamicLinkService {
   }
 
   Future<String> getSupporterLink() async {
-    String UID = 'ABCD';
+    String UID = FirebaseAuth.instance.currentUser.uid.toString();
     // print("userUID " + FirebaseAuth.instance.currentUser.uid.toString());
     final DynamicLinkParameters parameters = DynamicLinkParameters(
       uriPrefix: 'https://sabresmediapresence.page.link',

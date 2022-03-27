@@ -16,4 +16,4 @@ export 'package:careing/Services/dynamic_link_service.dart';
 export 'package:flutter/foundation.dart';
 export 'package:flutter/services.dart';
 export 'package:firebase_messaging/firebase_messaging.dart';
-export 'package:flutter_local_notifications/flutter_local_notifications.dart';
+export 'package:awesome_notifications/awesome_notifications.dart';

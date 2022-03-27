@@ -1,4 +1,3 @@
-
 import 'package:careing/Screens/onboading.dart';
 import 'package:careing/presence.dart';
 
@@ -189,15 +188,6 @@ class _RegisterScreenState extends State<RegisterScreen>
                       }).then((value) async {
                         print("User Added");
                         if (isPatient == true) {
-                          await FirebaseFirestore.instance
-                              .collection('users')
-                              .doc(referralUID)
-                              .collection("supportNetwork")
-                              .add({
-                            'UID': referralUID
-                            //add your data that you want to upload
-                          });
-
                           Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -205,6 +195,16 @@ class _RegisterScreenState extends State<RegisterScreen>
                             ),
                           );
                         } else {
+                           await FirebaseFirestore.instance
+                              .collection('users')
+                              .doc(referralUID)
+                              .collection("supportNetwork")
+                              .add({
+                            'UID': referralUID
+                            //add your data that you want to upload
+                          });
+                           FirebaseMessaging _fcm = FirebaseMessaging.instance;
+                          _fcm.subscribeToTopic('support');
                           Navigator.push(
                             context,
                             MaterialPageRoute(

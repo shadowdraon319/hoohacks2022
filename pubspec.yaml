@@ -41,7 +41,7 @@ dependencies:
   share_plus: ^4.0.3
   firebase_dynamic_links: ^4.1.1
   firebase_messaging: ^11.2.11
-  flutter_local_notifications: ^9.4.0
+  awesome_notifications: ^0.6.21
 
 
 dev_dependencies:
